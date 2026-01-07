@@ -8,7 +8,7 @@ import java.util.UUID;
 @Entity                   // define essa clasee como uma tabela no DB
 @Table(name = "TB_BOOK")  //definindo o nome no banco de dados
 public class BookModel implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L; //define a versão da classe para controle de compatibilidade na serialização
 
     @Id //chave primaria da tabela
     @GeneratedValue(strategy = GenerationType.AUTO) //como vai ser gerado o id automatico
