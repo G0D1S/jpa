@@ -1,5 +1,6 @@
 package com.bookstore.jpa.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -18,6 +19,13 @@ public class BookModel implements Serializable {
     private String title;
 
 
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToOne //(fetch = FetchType.LAZY) -> carregamento lento
+    //indica o relacionamento VARIOS livros p/ UMA editora, feito um lado do relacionamento
+    @JoinColumn (name = "publisher_id") //especificando a chave estrangeira na tb_book que vai relacionar com a tb_pubisher
+    //o dono do relacionamento é quem tem a FK (chave estrangeira )
+    //Foreign Key é a coluna que aponta para a Primary Key de outra tabela
+    private PublisherModel publisher;
 
     public String getTitle() {
         return title;
@@ -33,5 +41,13 @@ public class BookModel implements Serializable {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public PublisherModel getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(PublisherModel publisher) {
+        this.publisher = publisher;
     }
 }
