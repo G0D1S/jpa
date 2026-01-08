@@ -1,4 +1,13 @@
 package com.bookstore.jpa.dtos;
 
-public class BookRecordDto {
+import java.util.Set;
+import java.util.UUID;
+
+public record BookRecordDto (String title,
+                            UUID publisherId,
+                            Set<UUID> authorIds,
+                            String reviewComments) {
+
+
+
 }
