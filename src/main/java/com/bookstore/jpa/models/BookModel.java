@@ -21,8 +21,8 @@ public class BookModel implements Serializable {
     private String title;
 
 
-    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @ManyToOne //(fetch = FetchType.LAZY) -> carregamento lento
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToOne(fetch = FetchType.LAZY) //-> carregamento lento
     //indica o relacionamento VARIOS livros p/ UMA editora, feito um lado do relacionamento
 
     @JoinColumn (name = "publisher_id")
@@ -33,8 +33,8 @@ public class BookModel implements Serializable {
 
     private PublisherModel publisher;
 
-    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @ManyToMany //(fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToMany (fetch = FetchType.LAZY)
     @JoinTable(  //criando uma tabela auxiliar que vai unir os dois Id das tabelas (entity)
             name = "tb_book_author",  //nome da tabela auxiliar
             joinColumns = @JoinColumn(name = "book_id"), //adicionando a coluna que vai conter o id de BookModel
